@@ -18,7 +18,7 @@ export default {
         let temp_joke = '';
         for(let i = 0; i<this.joke.length; i++){
             if(this.joke[i] == ' '){
-                temp_joke = temp_joke + '-';
+                temp_joke = temp_joke + '_';
             }else{
                 temp_joke = temp_joke + this.joke[i];
             }
