@@ -10,9 +10,9 @@
       </select>
     </div>
     <div id="joke_container">
-      <SnakeJoke v-if="selected == 'Normal'" />
-      <NormalJoke v-if="selected == 'Snake'" />
-      <LoudJoke v-if="selected == 'Loud'" />
+      <SnakeJoke v-if="selected == 'Snake'" :joke="joke"/>
+      <NormalJoke v-if="selected == 'Normal'" :joke="joke"/>
+      <LoudJoke v-if="selected == 'Loud'" :joke="joke"/>
     </div>
   </div>
 </template>
@@ -31,7 +31,16 @@ export default {
   data() {
     return {
       selected: '',
+      joke: '',
     }
+  },
+  methods: {
+    getJoke: function(joke){
+      this.joke = joke;
+    }
+  },
+  mounted() {
+    this.$root.$on('jokeListener', this.getJoke)
   },
 }
 </script>
